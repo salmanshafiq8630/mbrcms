@@ -10,4 +10,9 @@ class Page extends Model
     use HasFactory;
 
     protected $fillable = ['parent_id', 'slug', 'title', 'content'];
+
+    public function childs() {
+        return $this->hasMany('App\Models\Page','parent_id','id') ;
+    }
+
 }

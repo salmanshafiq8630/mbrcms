@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/new-page', [PageController::class, 'create']);
-Route::get('/page/{slug}', [PageController::class, 'show']);
-Route::post('/add-page', [PageController::class, 'store']);
-Route::get('/edit-page', [PageController::class, 'edit']);
-Route::post('/update-page', [PageController::class, 'update']);
-Route::post('/delete-page', [PageController::class, 'destroy']);
+//Route::resource('pages', PageController::class);
+Route::get('/navigation', [MenuController::class, 'index']);
+
+Route::group(['prefix' => 'page'], function () {
+
+    Route::get('/list', [PageController::class, 'index'])->name('pages.index');
+    Route::get('/new', [PageController::class, 'create'])->name('pages.create');
+    Route::get('/{slug}', [PageController::class, 'show'])->name('pages.show');
+    Route::get('/edit/{id}', [PageController::class, 'edit'])->name('pages.edit');
+    Route::post('/add', [PageController::class, 'store'])->name('pages.store');
+    Route::post('/update', [PageController::class, 'update'])->name('pages.update');
+    Route::get('/delete/{id}', [PageController::class, 'destroy'])->name('pages.destroy');
+    
+    
+
+});

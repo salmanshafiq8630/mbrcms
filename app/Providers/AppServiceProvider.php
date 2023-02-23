@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Page;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,5 +22,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        $menus = Page::where('parent_id', '=', 0)->get();
+        $allMenus = Page::pluck('title','id')->all();
+        View::share(compact('menus','allMenus'));
     }
 }
