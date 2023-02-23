@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/page/{slug}', [PagesController::class, 'singlePage']);
+Route::get('/new-page', [PageController::class, 'create']);
+Route::get('/page/{slug}', [PageController::class, 'show']);
+Route::post('/add-page', [PageController::class, 'store']);
+Route::get('/edit-page', [PageController::class, 'edit']);
+Route::post('/update-page', [PageController::class, 'update']);
+Route::post('/delete-page', [PageController::class, 'destroy']);
