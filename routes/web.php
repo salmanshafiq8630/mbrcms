@@ -15,10 +15,7 @@ use App\Http\Controllers\MenuController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [PageController::class, 'index'])->name('pages.index');
 //Route::resource('pages', PageController::class);
 Route::get('/navigation', [MenuController::class, 'index']);
 
