@@ -14,8 +14,8 @@ use App\Http\Controllers\PageController;
 */
 
 Route::get('/', [PageController::class, 'index'])->name('pages.index');
+
 //Route::resource('pages', PageController::class);
-Route::get('/navigation', [MenuController::class, 'index']);
 
 Route::group(['prefix' => 'page'], function () {
 
