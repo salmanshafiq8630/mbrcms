@@ -10,7 +10,7 @@
      
       @foreach($menus as $menu)
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="{{route('pages.show', $menu->slug)}}">{{ $menu->title }}</a>
+        <a @if(count($menu->childs))class="dropdown-toggle" data-toggle="dropdown" @endif href="{{route('pages.show', $menu->slug)}}">{{ $menu->title }}</a>
         @if(count($menu->childs))
         @include('partials.nav.manageChild',['childs' => $menu->childs])
         @endif
