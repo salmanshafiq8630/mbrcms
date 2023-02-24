@@ -2,9 +2,22 @@
 <head>
     <title>BMR PAGES</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 
- 
 </head>
+<style>
+    .dropdown-menu .dropdown-menu{
+    left: 100%;top: 0;
+    }
+    .dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+</style>
 <body>
 @include('partials.nav.parentMenus')
 <div class="container">
@@ -20,7 +33,9 @@ $(document).ready(function(){
         dropdownMenu.parent().toggleClass("open");
 
     });
-});     
+    
+}); 
+  
 </script>
 </body>
 </html>
